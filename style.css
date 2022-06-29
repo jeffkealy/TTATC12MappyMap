@@ -43,4 +43,7 @@ body {
   .description {
     font-size: 13px;
   }
+  .plot:hover {
+    cursor: auto;
+  }
 }
