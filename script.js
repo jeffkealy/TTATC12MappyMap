@@ -1,14 +1,15 @@
 $(document).ready(function () {
-  $(".plot").click(function (e) {
-    //clear
-    $(".description").css("display", "none");
-    $(".plot > text").css("stroke-width", "2px");
+  var selectedPlot;
+  var oneClicked = false;
+  $(".plot").click(function () {
+    // if (selectedPlot != undefined && selectedPlot.css("display") === "block") {
+    //get rid of popup by clicking on the same plot
+    oneClicked = true;
+
+    clearPopup();
     htmlWidth = $(document).width();
     svgWidth = $("svg").width();
     svgLocation = $("svg").position();
-    console.log("svgWidth", svgWidth);
-    console.log("svgLocation", svgLocation.left);
-    console.log("htmlwidth", htmlWidth);
     //get plot #
     plot = $(this).attr("id").substring(5);
     //get plot location
@@ -18,9 +19,7 @@ $(document).ready(function () {
     //get desciption pop up width
     descriptionWidth = $(".description-" + plot).width();
 
-    //description wont spill off screen
-    console.log("plotLocationLeft", plotLocationLeft);
-    //Move the pop ups so they arent off the page
+    //Move the pop ups so they dont spill off screen
     if (htmlWidth > 1080) {
       if (plotLocationLeft > svgWidth - 340) {
         console.log("spill over by", svgWidth - plotLocationLeft);
@@ -39,16 +38,26 @@ $(document).ready(function () {
         plotLocationLeft = plotLocationLeft - (340 - difference);
       }
     }
-    //move pop ups for mobile
+
     if (htmlWidth < 541) {
       if (plotLocationLeft > svgWidth - (descriptionWidth + 20)) {
         console.log("spill over by", svgWidth - plotLocationLeft);
         difference = svgWidth - plotLocationLeft;
-        plotLocationLeft = plotLocationLeft - (170 - difference);
+        plotLocationLeft = plotLocationLeft - (90 - difference);
       }
     }
-
+    //show popup
     $(`#plot_${plot} > text`).css("stroke-width", "4px");
     $(".description-" + plot).css({ display: "block", top: `${plotLocation.top + 5}px`, left: `${plotLocationLeft}px` });
+    selectedPlot = $(".description-" + plot);
   });
+  //clear pop up when clicked
+  $(".description").click(function () {
+    clearPopup();
+  });
+
+  function clearPopup() {
+    $(".description").css("display", "none");
+    $(".plot > text").css("stroke-width", "2px");
+  }
 });
