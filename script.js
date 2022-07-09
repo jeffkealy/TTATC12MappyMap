@@ -11,13 +11,14 @@ $(document).ready(function () {
     svgWidth = $("svg").width();
     svgLocation = $("svg").position();
     //get plot #
-    plot = $(this).attr("id").substring(5);
+    plot = $(this).attr("id");
+
     //get plot location
     plotLocation = $(this).position();
     plotLocationLeft = plotLocation.left;
 
     //get desciption pop up width
-    descriptionWidth = $(".description-" + plot).width();
+    descriptionWidth = $("." + plot).width();
 
     //Move the pop ups so they dont spill off screen
     if (htmlWidth > 1080) {
@@ -48,8 +49,8 @@ $(document).ready(function () {
     }
     //show popup
     $(`#plot_${plot} > text`).css("stroke-width", "4px");
-    $(".description-" + plot).css({ display: "block", top: `${plotLocation.top + 5}px`, left: `${plotLocationLeft}px` });
-    selectedPlot = $(".description-" + plot);
+    $("." + plot).css({ display: "block", top: `${plotLocation.top + 5}px`, left: `${plotLocationLeft}px` });
+    selectedPlot = $("." + plot);
   });
   //clear pop up when clicked
   $(".description").click(function () {
