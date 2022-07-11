@@ -1,6 +1,11 @@
 $(document).ready(function () {
   var selectedPlot;
   var oneClicked = false;
+  var htmlWidth = $(document).width();
+  if (htmlWidth < 541) {
+    // svg viewbox viewBox="0 0 790 1210"
+    $("svg").attr("viewBox", "0 0 789 1211");
+  }
   $(".plot").click(function () {
     // if (selectedPlot != undefined && selectedPlot.css("display") === "block") {
     //get rid of popup by clicking on the same plot
@@ -46,6 +51,8 @@ $(document).ready(function () {
         difference = svgWidth - plotLocationLeft;
         plotLocationLeft = plotLocationLeft - (90 - difference);
       }
+      // svg viewbox viewBox="0 0 790 1210"
+      $("svg").attr("viewBox", "0 0 789 1211");
     }
     //show popup
     $(`#plot_${plot} > text`).css("stroke-width", "4px");
@@ -56,7 +63,6 @@ $(document).ready(function () {
   $(".description").click(function () {
     clearPopup();
   });
-
   function clearPopup() {
     $(".description").css("display", "none");
     $(".plot > text").css("stroke-width", "2px");
