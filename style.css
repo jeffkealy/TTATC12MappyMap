@@ -152,4 +152,13 @@ svg {
   .plot:hover {
     cursor: auto;
   }
+  #header {
+    font-size: 12px;
+    max-width: none;
+    width: 100%;
+  }
+  #header span {
+    padding: 8px 5px;
+    border-radius: 0;
+  }
 }
