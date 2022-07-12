@@ -82,6 +82,7 @@ body {
   z-index: 1;
 }
 svg {
+  display: block;
 }
 .plot {
   z-index: 2;
