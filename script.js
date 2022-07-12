@@ -4,7 +4,7 @@ $(document).ready(function () {
   var htmlWidth = $(document).width();
   if (htmlWidth < 541) {
     // svg viewbox viewBox="0 0 790 1210"
-    $("svg").attr("viewBox", "0 0 789 1211");
+    $("svg").attr("viewBox", "0 -3 793 1220");
   }
   $(".plot").click(function () {
     // if (selectedPlot != undefined && selectedPlot.css("display") === "block") {
@@ -52,7 +52,6 @@ $(document).ready(function () {
         plotLocationLeft = plotLocationLeft - (90 - difference);
       }
       // svg viewbox viewBox="0 0 790 1210"
-      $("svg").attr("viewBox", "0 0 789 1211");
     }
     //show popup
     $(`#plot_${plot} > text`).css("stroke-width", "4px");
